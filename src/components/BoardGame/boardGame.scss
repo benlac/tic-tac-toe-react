@@ -1,0 +1,45 @@
+.board-game {
+  display: flex;
+  flex-direction: column;
+  .board-game__title {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+    line-height: 14px;
+    .board-game__player {
+      font-weight: bold;
+    }
+  }
+  .board {
+    background-color: #14bdac;
+    height: 216px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+      .board__box {
+        width: 216px;
+        height: 216px;
+        text-align: center;
+      }
+      td {
+        width: 64px;
+        height: 64px;
+      }
+      .board__box td{
+        border: 3px solid #0fa191;
+      }
+      .board__box tr:first-child td {
+        border-top: none;
+      }
+      .board__box tr:last-child td{
+        border-bottom: none;
+      }
+      .board__box tr td:last-child{
+        border-right: none;
+      }
+      .board__box tr td:first-child{
+        border-left: none;
+      }
+  }
+}
