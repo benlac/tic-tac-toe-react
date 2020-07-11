@@ -10,14 +10,58 @@ import Replay from '../Replay';
 import './app.scss';
 
 // == Composant
-const App = () => (
-  <div className="app">
-    <Level />
-    <Player />
-    <BoardGame />
-    <Replay />
-  </div>
-);
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      boardState: [
+        '', '', '',
+        '', '', '',
+        '', '', '',
+      ],
+      lastMove: {
+        char: 'o',
+        position: 4,
+      },
+    };
+  }
 
+  onClickCase = (id) => {
+    const { lastMove, boardState } = this.state;
+    let player = lastMove.char;
+    if (lastMove.char === 'o' && boardState[id] === '') {
+      boardState.splice(id, 1, 'x');
+      player = 'x';
+    }
+    else if (lastMove.char === 'x' && boardState[id] === '') {
+      boardState.splice(id, 1, 'o');
+      player = 'o';
+    }
+
+    this.setState({
+      lastMove: {
+        char: player,
+        position: id,
+      },
+      boardState,
+    });
+  };
+
+  render() {
+    const { boardState, lastMove } = this.state;
+    return (
+      <div className="app">
+        <Level />
+        <Player />
+        <BoardGame
+          boardState={boardState}
+          onClickCase={this.onClickCase}
+          player={lastMove.char}
+        />
+        <Replay />
+      </div>
+    );
+  }
+}
 // == Export
 export default App;

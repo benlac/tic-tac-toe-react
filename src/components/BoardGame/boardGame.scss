@@ -13,9 +13,10 @@
   }
   .board {
     background-color: #14bdac;
-    height: 216px;
+    height: 236px;
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: center;
       .board__box {
         width: 216px;
@@ -25,6 +26,7 @@
       td {
         width: 64px;
         height: 64px;
+        font-size: 3em;
       }
       .board__box td{
         border: 3px solid #0fa191;
