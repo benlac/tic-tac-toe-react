@@ -21,9 +21,10 @@ class App extends React.Component {
       ],
       lastMove: {
         char: 'o',
-        position: 4,
+        position: null,
       },
     };
+    this.onClickCase = this.onClickCase.bind(this);
   }
 
   onClickCase = (id) => {

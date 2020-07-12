@@ -15,8 +15,47 @@ const BoardGame = ({ boardState, onClickCase, player }) => {
           <tbody>
             <tr>
               {boardState.map((item, index) => {
-                console.log(item);
-                return <Line id={index} value={item} key={index} onClickCase={onClickCase} />;
+                if (index < 3) {
+                  return (
+                    <Line
+                      id={index}
+                      value={item}
+                      key={index}
+                      onClickCase={onClickCase}
+                    />
+                  );
+                }
+                return null;
+              })}
+            </tr>
+            <tr>
+              {boardState.map((item, index) => {
+                if (index > 2 && index < 6) {
+                  return (
+                    <Line
+                      id={index}
+                      value={item}
+                      key={index}
+                      onClickCase={onClickCase}
+                    />
+                  );
+                }
+                return null;
+              })}
+            </tr>
+            <tr>
+              {boardState.map((item, index) => {
+                if (index > 5 && index <= 8) {
+                  return (
+                    <Line
+                      id={index}
+                      value={item}
+                      key={index}
+                      onClickCase={onClickCase}
+                    />
+                  );
+                }
+                return null;
               })}
             </tr>
           </tbody>
