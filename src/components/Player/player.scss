@@ -13,5 +13,11 @@
     display: flex;
     justify-content: space-between;
     cursor: pointer;
+    transition: .3s;
+  }
+  .active {
+    border-bottom-color:#14bdac;
+    box-shadow: 0 4px 5px rgba(0,0,0,.16);
+    transition: .3s;
   }
 }

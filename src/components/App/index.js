@@ -52,20 +52,34 @@ class App extends React.Component {
     });
   };
 
+  resetGame = () => {
+    this.setState({
+      boardState: [
+        '', '', '',
+        '', '', '',
+        '', '', '',
+      ],
+      lastMove: {
+        char: 'o',
+        position: null,
+      },
+    });
+  }
+
   render() {
     const { boardState, lastMove } = this.state;
     const winner = calculateWinner(boardState);
     return (
       <div className="app">
         <Level />
-        <Player />
+        <Player player={lastMove.char} />
         <BoardGame
           boardState={boardState}
           onClickCase={this.onClickCase}
           player={lastMove.char}
           winner={winner}
         />
-        <Replay />
+        <Replay handleClick={this.resetGame} />
       </div>
     );
   }
