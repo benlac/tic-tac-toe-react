@@ -8,6 +8,7 @@ import BoardGame from '../BoardGame';
 import Replay from '../Replay';
 
 import './app.scss';
+import { calculateWinner } from '../../utils/function';
 
 // == Composant
 class App extends React.Component {
@@ -30,6 +31,9 @@ class App extends React.Component {
   onClickCase = (id) => {
     const { lastMove, boardState } = this.state;
     let player = lastMove.char;
+    if (calculateWinner(boardState)) {
+      return;
+    }
     if (lastMove.char === 'o' && boardState[id] === '') {
       boardState.splice(id, 1, 'x');
       player = 'x';
@@ -50,6 +54,7 @@ class App extends React.Component {
 
   render() {
     const { boardState, lastMove } = this.state;
+    const winner = calculateWinner(boardState);
     return (
       <div className="app">
         <Level />
@@ -58,6 +63,7 @@ class App extends React.Component {
           boardState={boardState}
           onClickCase={this.onClickCase}
           player={lastMove.char}
+          winner={winner}
         />
         <Replay />
       </div>

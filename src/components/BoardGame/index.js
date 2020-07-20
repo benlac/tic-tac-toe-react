@@ -5,11 +5,19 @@ import PropTypes from 'prop-types';
 import './boardGame.scss';
 import Line from './Line';
 
-const BoardGame = ({ boardState, onClickCase, player }) => {
+const BoardGame = ({
+  boardState,
+  onClickCase,
+  player,
+  winner,
+}) => {
   const nextPlayer = player === 'o' ? 'x' : 'o';
   return (
     <div className="board-game">
-      <h2 className="board-game__title">C'est à <span className="board-game__player">{nextPlayer}</span> de jouer</h2>
+      {!winner
+      && <h2 className="board-game__title">C'est à <span className="board-game__player">{nextPlayer}</span> de jouer</h2>}
+      {winner
+      && <h2 className="board-game__title"><span className="board-game__player">{winner}</span> a gagné !</h2>}
       <div className="board">
         <table className="board__box">
           <tbody>
@@ -69,6 +77,8 @@ BoardGame.propTypes = {
   boardState: PropTypes.array.isRequired,
   onClickCase: PropTypes.func.isRequired,
   player: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  winner: PropTypes.string,
 };
 
 export default BoardGame;
