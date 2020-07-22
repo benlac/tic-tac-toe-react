@@ -66,6 +66,17 @@ class App extends React.Component {
     });
   }
 
+  changePlayer = () => {
+    if (this.state.lastMove.position !== null) {
+      return;
+    }
+    this.setState({
+      lastMove: {
+        char: 'x',
+      },
+    });
+  }
+
   render() {
     const { boardState, lastMove } = this.state;
     const winner = calculateWinner(boardState);
@@ -73,7 +84,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <Level />
-        <Player player={lastMove.char} />
+        <Player player={lastMove.char} handleClick={this.changePlayer} />
         <BoardGame
           boardState={boardState}
           onClickCase={this.onClickCase}
