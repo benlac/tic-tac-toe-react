@@ -25,3 +25,14 @@ export const calculateWinner = (squares) => {
   }
   return null;
 };
+
+/**
+ * Check if a match is null
+ * @param {Array} squares Array: board game
+ * @return true if array empty: all the boxes have been played
+ */
+export const matchNull = (squares) => {
+  const result = squares.map((square) => square !== '');
+  const sortArr = result.filter((value) => value === false);
+  return sortArr.length === 0;
+};

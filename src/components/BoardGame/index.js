@@ -10,14 +10,16 @@ const BoardGame = ({
   onClickCase,
   player,
   winner,
+  gameNull,
 }) => {
   const nextPlayer = player === 'o' ? 'x' : 'o';
   return (
     <div className="board-game">
       {!winner
-      && <h2 className="board-game__title">C'est à <span className="board-game__player">{nextPlayer}</span> de jouer</h2>}
+      && !gameNull && <h2 className="board-game__title">C'est à <span className="board-game__player">{nextPlayer}</span> de jouer</h2>}
       {winner
       && <h2 className="board-game__title"><span className="board-game__player">{winner}</span> a gagné !</h2>}
+      {gameNull && <h2 className="board-game__title">Match nul !</h2>}
       <div className="board">
         <table className="board__box">
           <tbody>
@@ -79,6 +81,7 @@ BoardGame.propTypes = {
   player: PropTypes.string.isRequired,
   // eslint-disable-next-line react/require-default-props
   winner: PropTypes.string,
+  gameNull: PropTypes.bool.isRequired,
 };
 
 export default BoardGame;

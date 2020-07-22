@@ -8,7 +8,7 @@ import BoardGame from '../BoardGame';
 import Replay from '../Replay';
 
 import './app.scss';
-import { calculateWinner } from '../../utils/function';
+import { calculateWinner, matchNull } from '../../utils/function';
 
 // == Composant
 class App extends React.Component {
@@ -69,6 +69,7 @@ class App extends React.Component {
   render() {
     const { boardState, lastMove } = this.state;
     const winner = calculateWinner(boardState);
+    const gameNull = !winner && matchNull(boardState);
     return (
       <div className="app">
         <Level />
@@ -78,6 +79,7 @@ class App extends React.Component {
           onClickCase={this.onClickCase}
           player={lastMove.char}
           winner={winner}
+          gameNull={gameNull}
         />
         <Replay handleClick={this.resetGame} />
       </div>
