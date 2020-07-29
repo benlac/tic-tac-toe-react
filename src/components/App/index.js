@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 // == Import npm
 import React from 'react';
 
@@ -26,6 +27,8 @@ class App extends React.Component {
       },
     };
     this.onClickCase = this.onClickCase.bind(this);
+    this.resetGame = this.resetGame.bind(this);
+    this.changePlayer = this.changePlayer.bind(this);
   }
 
   onClickCase = (id) => {
