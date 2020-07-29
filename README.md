@@ -5,7 +5,7 @@ A simple tic tac toe app made with ReactJS
 You can play two. 
 The computer mode will be available soon
 
-![alt text](https://github.com/benlac/tic-tac-toe-react/screen.png?raw=true)
+![alt text](https://github.com/benlac/tic-tac-toe-react/blob/master/screen.png?raw=true)
 
 ## Installation
 To setup the project, install the dependencies
